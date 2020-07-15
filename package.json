@@ -1,0 +1,26 @@
+{
+  "name": "book-my-cab",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "nodemon src/app.js --exec babel-node --presets env"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.16.3",
+    "mongoose": "5.7.0",
+    "mongoose-extend-schema": "^1.0.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "swagger-ui-express": "^4.1.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.19.4"
+  }
+}

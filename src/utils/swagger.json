@@ -1,0 +1,151 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "BookMyCab API",
+        "version": "1.0.0",
+        "description": "Project to provide online cab service."
+    },
+    "servers": [{
+        "url": "http://localhost:3000/api"
+    }],
+    "tags": [],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/getMyNearByCabs": {
+            "get": {
+                "tags": [
+                    "Cab"
+                ],
+                "summary": "Get all nearby cabs",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Cab"
+                        }
+                    }
+                }
+            }
+        },
+        "/booking": {
+            "get": {
+                "tags": [
+                    "Booking"
+                ],
+                "summary": "Get booking history",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Booking"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Booking"
+                ],
+                "summary": "Get booking history",
+                "parameters":[{"name":"booking","description":"Booking object","in":"body","required":true,"schema":{"$ref":"#/definitions/Booking"}}],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Booking"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "id": {
+            "properties": {
+                "uuid": {
+                    "type": "string"
+                }
+            }
+        },
+        "Cab": {
+            "type": "object",
+            "properties": {
+                "cabNumber": {
+                    "type": "string"
+                },
+                "driver": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/definitions/User"
+                        }
+                },
+                "isBooked": {
+                    "type": "boolean"
+                },
+                "model": {
+                    "type": "string"
+                },
+                "desc": {
+                    "type": "string"
+                }
+            }
+        },
+        "Booking": {
+            "type": "object",
+            "properties": {
+                "customer": {
+                    "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/definitions/User"
+                        }
+                },
+                "driver": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/definitions/User"
+                        }
+                },
+                "cab": {
+                    "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/definitions/Cab"
+                        }
+                },
+                "source_x_coordinate": {
+                    "type": "string"
+                },
+                "source_y_coordinate": {
+                    "type": "string"
+                }
+            }
+        },
+        "User": {
+            "type": "object",
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "emailId": {
+                    "type": "string"
+                },
+                "x_Co_ordinate": {
+                    "type": "string"
+                },
+                "y_Co_ordinate": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
